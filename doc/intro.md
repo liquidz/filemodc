@@ -1,3 +1,3 @@
-# Introduction to filemodb
+# Introduction to filemodc
 
 TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)

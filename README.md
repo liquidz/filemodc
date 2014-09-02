@@ -1,6 +1,6 @@
-# filemodb
+# filemodc
 
-file-mod-brain: A Clojure library designed to manage file modification status.
+file-mod-cache: A Clojure library designed to cache file modification status.
 
 ## Usage
 

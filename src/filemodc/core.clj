@@ -1,4 +1,4 @@
-(ns filemodb.core
+(ns filemodc.core
   (:require
     [clojure.core.cache :as cache]
     [clojure.edn        :as edn]))

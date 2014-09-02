@@ -1,6 +1,6 @@
-(ns filemodb.core-test
+(ns filemodc.core-test
   (:require
-    [filemodb.core      :refer :all]
+    [filemodc.core      :refer :all]
     [midje.sweet        :refer :all]
     [conjure.core       :refer :all]
     [clojure.java.io    :as io]
