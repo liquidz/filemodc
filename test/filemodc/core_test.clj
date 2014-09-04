@@ -4,8 +4,7 @@
     [midje.sweet        :refer :all]
     [conjure.core       :refer :all]
     [clojure.java.io    :as io]
-    [clojure.core.cache :as cache]
-    ))
+    [clojure.core.cache :as cache]))
 
 (def ^:const TEST_FILE "test/files/testfile")
 
