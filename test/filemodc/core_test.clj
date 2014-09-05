@@ -18,12 +18,31 @@
     (cached? (init) f)   => false
     (cached? (init d) f) => true))
 
-(fact "register! should work fine."
+(facts "register! should work fine."
+  (fact "simple register!"
+    (let [c (init)
+          f (io/file "DUMMY")]
+      (cached? c f) => false
+      (register! c f)
+      (cached? c f) => true))
+
+  (fact "register! with optional value"
+    (let [c (init)
+          f (io/file "DUMMY")]
+      (cached? c f) => false
+      (register! c f :optional "optional data")
+      (cached? c f) => true)))
+
+(fact "lookup should work fine."
   (let [c (init)
         f (io/file "DUMMY")]
-    (cached? c f) => false
+
     (register! c f)
-    (cached? c f) => true))
+    (contains? (lookup c f) :last-modified) => true
+
+    (register! c f :optional "data")
+    (contains? (lookup c f) :last-modified) => true
+    (:optional (lookup c f))                => "data"))
 
 (facts "modified? should work fine."
   (fact "no modification"

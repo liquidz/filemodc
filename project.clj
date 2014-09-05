@@ -1,4 +1,4 @@
-(defproject filemodc "0.0.1"
+(defproject filemodc "0.0.2"
   :description "A Clojure library designed to cache file modification status"
   :url         "https://github.com/liquidz/filemodc"
 
