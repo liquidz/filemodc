@@ -7,6 +7,7 @@ file-mod-cache: A Clojure library designed to cache file modification status.
 
 ## Usage
 
+ * basic usage
 ```clojure
 (ns foo
   (:require
@@ -30,6 +31,13 @@ file-mod-cache: A Clojure library designed to cache file modification status.
 (spit cache-file (fm/export-edn c))
 (def c* (fm/import-edn (slurp cache-file)))
 (fm/cached? c* f)         ;; => true
+```
+ * cache optional data
+```clojure
+(fm/register! c f :optional {:foo "bar"})
+(fm/cached? c f)          ;; => true
+(fm/lookup c f)           ;; => {:last-modified ...
+                          ;;     :optional {:foo "bar"}
 ```
 
 ## License
