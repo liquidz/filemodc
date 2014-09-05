@@ -16,23 +16,28 @@
 
 (defn register!
   "Register a java.io.File to cache object."
-  [c ^java.io.File f]
+  [c ^java.io.File f & {:keys [optional] :or {optional nil}}]
   (swap! c cache/miss
          (.getAbsolutePath f)
-         (get-last-modified f)))
+         {:last-modified (get-last-modified f)
+          :optional      optional}))
 
 (defn cached?
   "Check whether a specified java.io.File is cached or not."
   [c ^java.io.File f]
   (cache/has? @c (.getAbsolutePath f)))
 
+(defn lookup
+  "Look up cached java.io.File information."
+  [c ^java.io.File f]
+  (cache/lookup @c (.getAbsolutePath f)))
+
 (defn modified?
   "Check whether a specified java.io.File is modified or not."
   [c ^java.io.File f]
-  (let [path (.getAbsolutePath f)]
-    (if-let [v (cache/lookup @c path)]
-      (> (get-last-modified f) v)
-      true)))
+  (if-let [v (:last-modified (lookup c f) nil)]
+    (> (get-last-modified f) v)
+    true))
 
 (defn export-edn
   "Export cache object as edn string."
