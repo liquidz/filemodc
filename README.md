@@ -5,6 +5,12 @@
 
 file-mod-cache: A Clojure library designed to cache file modification status.
 
+## Installation
+
+Add following dependency to your `project.clj`.
+
+[![Clojars Project](http://clojars.org/filemodc/latest-version.svg)](http://clojars.org/filemodc)
+
 ## Usage
 
  * basic usage
